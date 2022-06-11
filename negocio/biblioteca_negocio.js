@@ -30,6 +30,16 @@ function cadastrarCliente (cliente, callback) {
     }  
 } 
 
+function buscarLivroISBN (isbn, callback) {
+    if(!isbn){
+        const erro = "Preencha todos os campos!";
+        callback(erro, undefined)
+    }
+    else {
+        bibliotecaRepository.buscarLivroISBN(isbn);
+    }  
+} 
+
 module.exports = {
-    cadastrarLivro, cadastrarAutor, cadastrarCliente
+    cadastrarLivro, cadastrarAutor, cadastrarCliente, buscarLivroISBN
 } 
