@@ -1,0 +1,18 @@
+{
+  "name": "trabalho_dev_api",
+  "version": "1.0.0",
+  "description": "Operacoes de CRUD para Biblioteca",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [
+    "CRUD",
+    "biblioteca"
+  ],
+  "author": "Lais Correa",
+  "license": "ISC",
+  "dependencies": {
+    "pg": "^8.7.3"
+  }
+}
