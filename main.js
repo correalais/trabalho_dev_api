@@ -1,7 +1,7 @@
 const usuario = require('./negocio/biblioteca_negocio.js');
 
 
-/* usuario.cadastrarLivro({isbn: 8576082675, nome: 'Clean Code', autor: 'Robert C. Martin', editora: 'Alta Books', ano: '2009'}, 
+usuario.cadastrarLivro({isbn: 8576082675, nome: 'Clean Code', autor: 'Robert C. Martin', editora: 'Alta Books', ano: '2009'}, 
 function(err, livroCadastrado) {
     if(err) {
         console.log("Sistema esta com problemas");
@@ -37,18 +37,18 @@ function(err, clienteCadastrado) {
         console.log(clienteCadastrado);
     }
 });
-*/   
 
-/* usuario.buscarLivroISBN(8576082675, function(livro){
+
+usuario.buscarLivroISBN(8576082675, function(livro){
     if (!livro){
         console.log('Não há livros cadastrados.')
     } else{
         console.table(livro);
     }      
     
-}); */  
+});   
 
- usuario.listarLivros(function(livros){
+usuario.listarLivros(function(livros){
     if (!livros){
         console.log('Não há livros cadastrados.')
     } else{
