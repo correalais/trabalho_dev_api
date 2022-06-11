@@ -36,10 +36,15 @@ function buscarLivroISBN (isbn, callback) {
         callback(erro, undefined)
     }
     else {
-        bibliotecaRepository.buscarLivroISBN(isbn);
+        bibliotecaRepository.buscarLivroISBN(isbn, callback);
     }  
-} 
+}  
+
+function listarLivros(callback) {
+    bibliotecaRepository.listarLivros(callback);
+}
+
 
 module.exports = {
-    cadastrarLivro, cadastrarAutor, cadastrarCliente, buscarLivroISBN
+    cadastrarLivro, cadastrarAutor, cadastrarCliente, buscarLivroISBN, listarLivros
 } 

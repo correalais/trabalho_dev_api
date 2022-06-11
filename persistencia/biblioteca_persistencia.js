@@ -53,7 +53,7 @@ function cadastrarCliente(cliente, callback){
 
 }
 
-function buscarLivroISBN(isbn){
+function buscarLivroISBN(isbn, callback){
     const user = new Client(conexao);
     user.connect();
 
@@ -67,7 +67,8 @@ function buscarLivroISBN(isbn){
             }
             else if (res.rows && res.rows.length > 0) {
                 let livro = res.rows[0];
-                console.table(livro);
+                //console.table(livro);
+                callback(livro)
             }
             else {
                 const error = "Livro não encontrado";
@@ -77,4 +78,23 @@ function buscarLivroISBN(isbn){
         })
 }
 
-module.exports = {cadastrarLivro, cadastrarAutor, cadastrarCliente, buscarLivroISBN}
+function listarLivros(callback) {
+    const user = new Client(conexao);
+    user.connect();
+    
+    const sql = "SELECT * FROM livros";
+    user.query(sql, 
+        function (err, res) {
+            if(err) {
+                callback(err.message, undefined);
+            }
+            else {
+                let livros = res.rows;
+                callback(livros);     
+            }
+            user.end();
+        }
+    )    
+}
+
+module.exports = {cadastrarLivro, cadastrarAutor, cadastrarCliente, buscarLivroISBN, listarLivros}
