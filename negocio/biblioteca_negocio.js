@@ -1,4 +1,4 @@
-const bibliotecaRepository = require('../biblioteca_persistencia')
+const bibliotecaRepository = require('../persistencia/biblioteca_persistencia')
 
  function cadastrarLivro (livro, callback) {
     if(!livro || !livro.isbn || !livro.nome || !livro.autor || !livro.editora || !livro.ano){
