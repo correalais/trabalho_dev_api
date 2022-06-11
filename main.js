@@ -1,7 +1,7 @@
-const cadastro = require('./negocio/biblioteca_negocio.js');
+const usuario = require('./negocio/biblioteca_negocio.js');
 
 
-cadastro.cadastrarLivro({isbn: 8345082432, nome: 'Python', autor: 'Ciclano', editora: 'Alta Books', ano: '2020'}, 
+usuario.cadastrarLivro({isbn: 8576082675, nome: 'Clean Code', autor: 'Robert C. Martin', editora: 'Alta Books', ano: '2009'}, 
 function(err, livroCadastrado) {
     if(err) {
         console.log("Sistema esta com problemas");
@@ -14,7 +14,7 @@ function(err, livroCadastrado) {
 });   
 
 
-cadastro.cadastrarAutor({id:3, nome: 'Beltrano', pais: 'Brasil'}, 
+usuario.cadastrarAutor({id:3, nome: 'Márcio da Silva', pais: 'Brasil'}, 
 function(err, autorCadastrado) {
     if(err) {
         console.log("Sistema esta com problemas");
@@ -26,7 +26,7 @@ function(err, autorCadastrado) {
     }
 });  
 
-cadastro.cadastrarCliente({matricula: 123456, nome: 'Márcio Santos', telefone: 519874569}, 
+usuario.cadastrarCliente({matricula: 123456, nome: 'Cláudia Pereira', telefone: 519874569}, 
 function(err, clienteCadastrado) {
     if(err) {
         console.log("Sistema esta com problemas");
@@ -36,4 +36,6 @@ function(err, clienteCadastrado) {
         console.log("Cliente cadastrado: ");
         console.log(clienteCadastrado);
     }
-});  
+});   
+
+usuario.buscarLivroISBN(8576082675) 
