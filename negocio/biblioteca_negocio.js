@@ -44,7 +44,26 @@ function listarLivros(callback) {
     bibliotecaRepository.listarLivros(callback);
 }
 
+function realizarEmprestimo(valores, callback){
+    if(!valores|| !valores.isbn||  !valores.nome || !valores.cliente || !valores.data_retirada || !valores.data_entrega){
+        const erro = "Preencha todos os campos!";
+        callback(erro, undefined)
+    } else {
+        bibliotecaRepository.realizarEmprestimo(valores, callback)
+    }
+}
+
+function consultarEmprestimo(isbn, callback){
+    if (!isbn){
+        const erro = "Preencha todos os campos!";
+        callback(erro, undefined)
+    } else {
+        console.log('Status do Livro: ')
+        bibliotecaRepository.consultarEmprestimo(isbn, callback)
+    }
+}
+
 
 module.exports = {
-    cadastrarLivro, cadastrarAutor, cadastrarCliente, buscarLivroISBN, listarLivros
+    cadastrarLivro, cadastrarAutor, cadastrarCliente, buscarLivroISBN, listarLivros, realizarEmprestimo, consultarEmprestimo
 } 

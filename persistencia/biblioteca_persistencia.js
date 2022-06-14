@@ -115,4 +115,40 @@ function listarLivros(callback) {
     )    
 }
 
-module.exports = {cadastrarLivro, cadastrarAutor, cadastrarCliente, buscarLivroISBN, listarLivros}
+function realizarEmprestimo(valores, callback){
+    const user = new Client(conexao);
+    user.connect();
+    const sql = "SELECT * FROM _fazerEmprestimo($1, $2, $3, $4, $5)";
+    const values = [valores.isbn, valores.nome, valores.cliente, valores.data_retirada, valores.data_entrega];
+
+    user.query(sql, values, 
+        function (err, res){
+            if (err){
+                const erro = "Ops! Aconteceu um erro. Revise e tente novamente.";
+                callback(erro);
+            } else {
+                callback(res.rows[0]);
+            }
+            user.end();
+        });
+}
+
+function consultarEmprestimo (isbn, callback){
+    const user = new Client(conexao);
+    user.connect();
+    const sql = "SELECT status FROM livros where isbn = $1";
+    const values = [isbn];
+
+    user.query(sql, values, 
+        function (err, res){
+            if (err){
+                const erro = "Ops! Aconteceu um erro. Revise e tente novamente.";
+                callback(erro);
+            } else {
+                callback(res.rows[0]);
+            }
+            user.end();
+        });
+}
+
+module.exports = {cadastrarLivro, cadastrarAutor, cadastrarCliente, buscarLivroISBN, listarLivros, realizarEmprestimo, consultarEmprestimo}
