@@ -1,7 +1,7 @@
 const usuario = require('./negocio/biblioteca_negocio.js');
 
 
-usuario.cadastrarLivro({isbn: 8576082675, nome: 'Clean Code', autor: 'Robert C. Martin', editora: 'Alta Books', ano: '2009'}, 
+usuario.cadastrarLivro({isbn: 8582603363, nome: 'Java Para Iniciantes', autor: 'Herbert Schildt', editora: 'Bookman', ano: '2015', status: 'Emprestado'}, 
 function(err, livroCadastrado) {
     if(err) {
         console.log("Sistema esta com problemas");
@@ -56,4 +56,4 @@ usuario.listarLivros(function(livros){
         console.table(livros);
     }
    
-}); 
+});  

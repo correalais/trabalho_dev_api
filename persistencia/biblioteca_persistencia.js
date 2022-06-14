@@ -12,8 +12,8 @@ function cadastrarLivro(livro, callback){
 
     const user = new Client(conexao);
     user.connect();
-    const sql = "INSERT INTO livros (isbn, nome, autor, editora, ano) VALUES ($1, $2, $3, $4, $5) RETURNING *";
-    const values = [livro.isbn, livro.nome, livro.autor, livro.editora, livro.ano];
+    const sql = "INSERT INTO livros (isbn, nome, autor, editora, ano, status) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *";
+    const values = [livro.isbn, livro.nome, livro.autor, livro.editora, livro.ano, livro.status];
     user.query(sql, values, 
         function (err, res) {
             callback(err, res.rows);
