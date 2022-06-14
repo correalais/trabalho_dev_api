@@ -1,7 +1,7 @@
 const usuario = require('./negocio/biblioteca_negocio.js');
 
 
-usuario.cadastrarLivro({isbn: 8575227182, nome: 'Python2', autor: 'Nilo Ney Coutinho2', editora: 'Novatec2', ano: '2019', status: 'Emprestado'}, 
+usuario.cadastrarLivro({isbn: 9876543210, nome: 'Um teste perfeito', autor: 'José Antonio', editora: 'Páginas Brancas', ano: '2010', status: 'Disponivel'}, 
 function(err, livroCadastrado) {
     if(err) {
         console.log(err);
@@ -13,7 +13,7 @@ function(err, livroCadastrado) {
 });    
  
 
-usuario.cadastrarAutor({id:4, nome: 'João da Silva', pais: 'Brasil'}, 
+usuario.cadastrarAutor({id: 5, nome: 'José Antonio', pais: 'Brasil'}, 
 function(err, autorCadastrado) {
     if(err) {
         console.log(err);
@@ -24,7 +24,7 @@ function(err, autorCadastrado) {
     }
 });  
 
-usuario.cadastrarCliente({matricula: 123456, nome: 'Cláudia Pereira', telefone: 519874569}, 
+usuario.cadastrarCliente({matricula: 456789, nome: 'Felipe Borges', telefone: 5194948888}, 
 function(err, clienteCadastrado) {
     if(err) {
         console.log(err);
@@ -36,22 +36,22 @@ function(err, clienteCadastrado) {
 });
 
 
-usuario.buscarLivroISBN(8576082675, function(livro){
+usuario.buscarLivroISBN(9876543210, function(livro){
     if (!livro){
         console.log('Não há livros cadastrados.')
     } else{
         console.table(livro);
     }      
     
-});  
-usuario.buscarLivroNome('Python', function(livro){
+});
+usuario.buscarLivroNome('Um teste perfeito', function(livro){
     if (!livro){
         console.log(err)
     } else{
         console.table(livro);
     }      
     
-});    
+});
 
 usuario.listarLivros(function(livros){
     if (!livros){
@@ -64,13 +64,13 @@ usuario.listarLivros(function(livros){
 }); 
 
 
-usuario.realizarEmprestimo({isbn: 8582603363, nome: 'Java Para Iniciantes', cliente: 'Adalberto', data_retirada: '2022/06/10', data_entrega: '2022/06/11'}, function(err, retorno){
+usuario.realizarEmprestimo({isbn: 8575227182, nome: 'Python2', cliente: 'Alfredo Neves', data_retirada: '2022/06/13', data_entrega: '2022/06/14'}, function(err, retorno){
     if (err){
         console.log(err);
     } else {
         console.log(retorno);
     }
-});  
+});   
 
 usuario.consultarEmprestimo(8582603363, function(err, retorno){
     if (err){
@@ -79,3 +79,4 @@ usuario.consultarEmprestimo(8582603363, function(err, retorno){
         console.log(retorno);
     }
 }); 
+ 
