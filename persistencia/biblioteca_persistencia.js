@@ -110,7 +110,7 @@ function buscarLivroNome(nome, callback){
                 callback(err);            
             }
             else if (res.rows && res.rows.length > 0) {
-                let livro = res.rows[0];
+                let livro = res.rows;
                 //console.table(livro);
                 callback(livro)
             }
@@ -153,7 +153,12 @@ function realizarEmprestimo(valores, callback){
                 const erro = "Ops! Aconteceu um erro. Revise e tente novamente.";
                 callback(erro);
             } else {
-                callback(res.rows[0]);
+                if (res.rows && res.rows.length > 0){
+                    for (var i=0; i<res.rows.length; i++){
+                        callback(res.rows[i]);
+                    }
+                }
+                
             }
             user.end();
         });
@@ -162,7 +167,7 @@ function realizarEmprestimo(valores, callback){
 function consultarEmprestimo (isbn, callback){
     const user = new Client(conexao);
     user.connect();
-    const sql = "SELECT status FROM livros where isbn = $1";
+    const sql = "SELECT nome, status FROM livros where isbn = $1";
     const values = [isbn];
 
     user.query(sql, values, 
