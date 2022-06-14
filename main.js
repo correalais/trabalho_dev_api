@@ -43,6 +43,14 @@ usuario.buscarLivroISBN(8576082675, function(livro){
         console.table(livro);
     }      
     
+});  
+usuario.buscarLivroNome('Python', function(livro){
+    if (!livro){
+        console.log(err)
+    } else{
+        console.table(livro);
+    }      
+    
 });    
 
 usuario.listarLivros(function(livros){
@@ -55,13 +63,14 @@ usuario.listarLivros(function(livros){
    
 }); 
 
-usuario.realizarEmprestimo({isbn: 8576082675, nome: 'Clean Code', cliente: 'Fulano da Silva', data_retirada: '2022/06/06', data_entrega: '2022/06/07'}, function(err, retorno){
+
+usuario.realizarEmprestimo({isbn: 8582603363, nome: 'Java Para Iniciantes', cliente: 'Adalberto', data_retirada: '2022/06/10', data_entrega: '2022/06/11'}, function(err, retorno){
     if (err){
         console.log(err);
     } else {
         console.log(retorno);
     }
-}); 
+});  
 
 usuario.consultarEmprestimo(8582603363, function(err, retorno){
     if (err){

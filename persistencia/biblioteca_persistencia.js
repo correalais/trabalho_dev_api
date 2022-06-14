@@ -95,6 +95,32 @@ function buscarLivroISBN(isbn, callback){
             user.end();
         })
 }
+function buscarLivroNome(nome, callback){
+    const user = new Client(conexao);
+    user.connect();
+
+    const sql = "SELECT * FROM livros WHERE nome=$1";
+    const values = [nome];
+
+    user.query(sql, values, 
+        function (err, res) {
+            if(err) {
+                //console.log(err.message, undefined); 
+                const erro = "Ops! Aconteceu um erro. Revise e tente novamente.";
+                callback(err);            
+            }
+            else if (res.rows && res.rows.length > 0) {
+                let livro = res.rows[0];
+                //console.table(livro);
+                callback(livro)
+            }
+            else {
+                const error = "Nenhum livro com este nome cadastrado.";
+                console.log(error);
+            }
+            user.end();
+        })
+}
 
 function listarLivros(callback) {
     const user = new Client(conexao);
@@ -145,10 +171,10 @@ function consultarEmprestimo (isbn, callback){
                 const erro = "Ops! Aconteceu um erro. Revise e tente novamente.";
                 callback(erro);
             } else {
-                callback(res.rows[0]);
+                callback(res.rows);
             }
             user.end();
         });
 }
 
-module.exports = {cadastrarLivro, cadastrarAutor, cadastrarCliente, buscarLivroISBN, listarLivros, realizarEmprestimo, consultarEmprestimo}
+module.exports = {cadastrarLivro, cadastrarAutor, cadastrarCliente, buscarLivroISBN, listarLivros, realizarEmprestimo, consultarEmprestimo, buscarLivroNome}

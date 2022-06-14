@@ -38,6 +38,16 @@ function buscarLivroISBN (isbn, callback) {
     else {
         bibliotecaRepository.buscarLivroISBN(isbn, callback);
     }  
+}
+
+function buscarLivroNome (nome, callback) {
+    if(!nome){
+        const erro = "Preencha todos os campos!";
+        callback(erro, undefined)
+    }
+    else {
+        bibliotecaRepository.buscarLivroNome(nome, callback);
+    }  
 }  
 
 function listarLivros(callback) {
@@ -65,5 +75,5 @@ function consultarEmprestimo(isbn, callback){
 
 
 module.exports = {
-    cadastrarLivro, cadastrarAutor, cadastrarCliente, buscarLivroISBN, listarLivros, realizarEmprestimo, consultarEmprestimo
+    cadastrarLivro, cadastrarAutor, cadastrarCliente, buscarLivroISBN, listarLivros, realizarEmprestimo, consultarEmprestimo, buscarLivroNome
 } 
