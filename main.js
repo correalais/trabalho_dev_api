@@ -1,23 +1,21 @@
 const usuario = require('./negocio/biblioteca_negocio.js');
 
 
-usuario.cadastrarLivro({isbn: 8582603363, nome: 'Java Para Iniciantes', autor: 'Herbert Schildt', editora: 'Bookman', ano: '2015', status: 'Emprestado'}, 
+/* usuario.cadastrarLivro({isbn: 8575227182, nome: 'Python2', autor: 'Nilo Ney Coutinho2', editora: 'Novatec2', ano: '2019', status: 'Emprestado'}, 
 function(err, livroCadastrado) {
     if(err) {
-        console.log("Sistema esta com problemas");
         console.log(err);
     }
     else {
         console.log("Livro cadastrado: ");
         console.log(livroCadastrado);
     }
-});   
+});    */
+ 
 
-
-usuario.cadastrarAutor({id:3, nome: 'Márcio da Silva', pais: 'Brasil'}, 
+/* usuario.cadastrarAutor({id:4, nome: 'João da Silva', pais: 'Brasil'}, 
 function(err, autorCadastrado) {
     if(err) {
-        console.log("Sistema esta com problemas");
         console.log(err);
     }
     else {
@@ -29,14 +27,13 @@ function(err, autorCadastrado) {
 usuario.cadastrarCliente({matricula: 123456, nome: 'Cláudia Pereira', telefone: 519874569}, 
 function(err, clienteCadastrado) {
     if(err) {
-        console.log("Sistema esta com problemas");
         console.log(err);
     }
     else {
         console.log("Cliente cadastrado: ");
         console.log(clienteCadastrado);
     }
-});
+}); */
 
 
 usuario.buscarLivroISBN(8576082675, function(livro){
@@ -48,7 +45,7 @@ usuario.buscarLivroISBN(8576082675, function(livro){
     
 });   
 
-usuario.listarLivros(function(livros){
+/* usuario.listarLivros(function(livros){
     if (!livros){
         console.log('Não há livros cadastrados.')
     } else{
@@ -56,4 +53,4 @@ usuario.listarLivros(function(livros){
         console.table(livros);
     }
    
-});  
+}); */

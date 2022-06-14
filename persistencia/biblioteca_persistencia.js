@@ -16,7 +16,13 @@ function cadastrarLivro(livro, callback){
     const values = [livro.isbn, livro.nome, livro.autor, livro.editora, livro.ano, livro.status];
     user.query(sql, values, 
         function (err, res) {
-            callback(err, res.rows);
+            if (err){
+                const erro = "Ops! Aconteceu um erro. Revise e tente novamente.";
+                callback(erro);
+            } else {
+                callback(res.rows);
+            }
+            
             user.end();
         } 
     )   
@@ -32,7 +38,12 @@ function cadastrarAutor(autor, callback){
 
     user.query(sql, values, 
         function (err, res){
-            callback(err, res.rows);
+            if (err){
+                const erro = "Ops! Aconteceu um erro. Revise e tente novamente.";
+                callback(erro);
+            } else {
+                callback(res.rows);
+            }
             user.end();
         })
 
@@ -47,7 +58,12 @@ function cadastrarCliente(cliente, callback){
 
     user.query(sql, values, 
         function (err, res){
-            callback(err, res.rows);
+            if (err){
+                const erro = "Ops! Aconteceu um erro. Revise e tente novamente.";
+                callback(erro);
+            } else {
+                callback(res.rows);
+            }
             user.end();
         })
 
@@ -63,7 +79,9 @@ function buscarLivroISBN(isbn, callback){
     user.query(sql, values, 
         function (err, res) {
             if(err) {
-                console.log(err.message, undefined);                
+                //console.log(err.message, undefined); 
+                const erro = "Ops! Aconteceu um erro. Revise e tente novamente.";
+                callback(erro);            
             }
             else if (res.rows && res.rows.length > 0) {
                 let livro = res.rows[0];
