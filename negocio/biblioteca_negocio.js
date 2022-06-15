@@ -55,7 +55,7 @@ function listarLivros(callback) {
 }
 
 function realizarEmprestimo(valores, callback){
-    if(!valores|| !valores.isbn||  !valores.nome || !valores.cliente || !valores.data_retirada || !valores.data_entrega){
+    if(!valores|| !valores.isbn||  !valores.nome || !valores.cliente || !valores.matricula || !valores.data_retirada || !valores.data_entrega){
         const erro = "Preencha todos os campos!";
         callback(erro, undefined)
     } else {

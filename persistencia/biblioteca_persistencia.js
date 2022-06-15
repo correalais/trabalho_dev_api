@@ -144,13 +144,13 @@ function listarLivros(callback) {
 function realizarEmprestimo(valores, callback){
     const user = new Client(conexao);
     user.connect();
-    const sql = "SELECT * FROM _fazerEmprestimo($1, $2, $3, $4, $5)";
-    const values = [valores.isbn, valores.nome, valores.cliente, valores.data_retirada, valores.data_entrega];
+    const sql = "SELECT * FROM fn_fazerEmprestimo($1, $2, $3, $4, $5, $6)";
+    const values = [valores.isbn, valores.nome, valores.cliente, valores.matricula, valores.data_retirada, valores.data_entrega];
 
     user.query(sql, values, 
         function (err, res){
             if (err){
-                const erro = "Ops! Aconteceu um erro. Revise e tente novamente.";
+                const erro = "Ops! Aconteceu um erro. Cliente não existe no sistema";
                 callback(erro);
             } else {
                 if (res.rows && res.rows.length > 0){
